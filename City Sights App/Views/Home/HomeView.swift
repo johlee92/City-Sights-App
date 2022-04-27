@@ -41,13 +41,37 @@ struct HomeView: View {
                     .padding()
                     .navigationBarHidden(true)
                 } else {
-                    // Show map
-                    BusinessMap(selectedBusiness: $selectedBusiness)
-                        .ignoresSafeArea()
-                        .sheet(item: $selectedBusiness, content: {
-                            business in
-                            BusinessDetail(business: business)
-                        })
+                    
+                    ZStack (alignment: .top) {
+                        // Show map
+                        BusinessMap(selectedBusiness: $selectedBusiness)
+                            .ignoresSafeArea()
+                            .sheet(item: $selectedBusiness, content: {
+                                business in
+                                BusinessDetail(business: business)
+                            })
+                        
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(.white)
+                                .cornerRadius(5)
+                                .frame(height: 48)
+                            
+                            HStack {
+                                Image(systemName: "location")
+                                Text("City")
+                                Spacer()
+                                Button {
+                                    self.isMapShowing = false
+                                } label: {
+                                    Text("Switch to List View")
+                                }
+                            }
+                            .padding()
+                        }
+                        .padding()
+                        .navigationBarHidden(true)
+                    }
                 }
             }
             
