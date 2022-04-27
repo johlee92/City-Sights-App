@@ -41,10 +41,14 @@ struct BusinessDetail: View {
             }
             
             Group {
-                BusinessTitle(business: business)
-                    .padding()
+                HStack {
+                    BusinessTitle(business: business)
+                        .padding()
+                    Spacer()
+                    YelpAttribution(link: business.url!)
+                }
                 
-                Divider()
+                DashedDivider()
                 
                 HStack {
                     Text("Phone")
@@ -59,7 +63,7 @@ struct BusinessDetail: View {
                 }
                 .padding()
                 
-                Divider()
+                DashedDivider()
                 
                 HStack {
                     Text("Reviews")
@@ -74,7 +78,7 @@ struct BusinessDetail: View {
                 }
                 .padding()
                 
-                Divider()
+                DashedDivider()
                 
                 HStack {
                     Text("Webite:")
@@ -90,7 +94,7 @@ struct BusinessDetail: View {
                 }
                 .padding()
                 
-                Divider()
+                DashedDivider()
                 
             }
             
