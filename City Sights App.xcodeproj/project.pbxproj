@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB52BA352818BBB80027C72B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB52BA342818BBB80027C72B /* Model.swift */; };
+		CB52BA372818BBCB0027C72B /* SampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB52BA362818BBCB0027C72B /* SampleData.json */; };
+		CB52BA392818C56C0027C72B /* BusinessSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB52BA382818C56C0027C72B /* BusinessSearch.swift */; };
+		CB52BA3C2818C7080027C72B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB52BA3B2818C7080027C72B /* Constants.swift */; };
 		CB97C3832817A88A005B75FC /* CitySightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97C3822817A88A005B75FC /* CitySightsApp.swift */; };
 		CB97C3852817A88A005B75FC /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97C3842817A88A005B75FC /* LaunchView.swift */; };
 		CB97C3872817A88E005B75FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB97C3862817A88E005B75FC /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB52BA342818BBB80027C72B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		CB52BA362818BBCB0027C72B /* SampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleData.json; sourceTree = "<group>"; };
+		CB52BA382818C56C0027C72B /* BusinessSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSearch.swift; sourceTree = "<group>"; };
+		CB52BA3B2818C7080027C72B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB97C37F2817A88A005B75FC /* City Sights App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "City Sights App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB97C3822817A88A005B75FC /* CitySightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySightsApp.swift; sourceTree = "<group>"; };
 		CB97C3842817A88A005B75FC /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -37,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB52BA3A2818C6F80027C72B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CB52BA3B2818C7080027C72B /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		CB97C3762817A88A005B75FC = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +77,7 @@
 				CB97C3902817A8BB005B75FC /* Views */,
 				CB97C3912817A8BF005B75FC /* ViewModels */,
 				CB97C3922817A8C4005B75FC /* Models */,
+				CB52BA3A2818C6F80027C72B /* Helpers */,
 				CB97C3862817A88E005B75FC /* Assets.xcassets */,
 				CB97C3882817A88E005B75FC /* Preview Content */,
 			);
@@ -94,6 +111,9 @@
 		CB97C3922817A8C4005B75FC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CB52BA382818C56C0027C72B /* BusinessSearch.swift */,
+				CB52BA342818BBB80027C72B /* Model.swift */,
+				CB52BA362818BBCB0027C72B /* SampleData.json */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -165,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB97C38A2817A88E005B75FC /* Preview Assets.xcassets in Resources */,
+				CB52BA372818BBCB0027C72B /* SampleData.json in Resources */,
 				CB97C3872817A88E005B75FC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +200,9 @@
 				CB97C3852817A88A005B75FC /* LaunchView.swift in Sources */,
 				CB97C3832817A88A005B75FC /* CitySightsApp.swift in Sources */,
 				CB97C3942817B534005B75FC /* ContentModel.swift in Sources */,
+				CB52BA392818C56C0027C72B /* BusinessSearch.swift in Sources */,
+				CB52BA352818BBB80027C72B /* Model.swift in Sources */,
+				CB52BA3C2818C7080027C72B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

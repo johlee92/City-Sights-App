@@ -10,6 +10,9 @@ import CoreLocation
 
 class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
+    @Published var sights = [Business]()
+    @Published var restaurants = [Business]()
+    
     var locationManager = CLLocationManager()
     
     override init() {
@@ -43,7 +46,8 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         if userLocation != nil {
             // Once coordinates received, send to API
-            getBusinesses(category: "restaurants", location: userLocation!)
+            getBusinesses(category: Constants.restaurantsKey, location: userLocation!)
+            getBusinesses(category: Constants.sightsKey, location: userLocation!)
             
             // Stop requesting location after data received
             locationManager.stopUpdatingLocation()
@@ -55,7 +59,7 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 //        let urlString = "https://api.yelp.com/v3/businesses/search?latitude=\(location.coordinate.latitude)&longitude=\(location.coordinate.longitude)&limit=6&categories=\(category)"
 //        let url = URL(string: urlString)
         
-        var urlComponents = URLComponents(string: "https://api.yelp.com/v3/businesses/search")
+        var urlComponents = URLComponents(string: Constants.apiUrl)
         urlComponents?.queryItems = [
             URLQueryItem(name: "latitude", value: String(location.coordinate.latitude)),
             URLQueryItem(name: "longitude", value: String(location.coordinate.longitude)),
@@ -69,7 +73,7 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
             
             request.httpMethod = "GET"
-            request.addValue("Bearer 10nAtjh6CvhwkjCWHHAyraxPhNMdvzQaG-9TQyH0mjhE7uz582aQdr0lfozFDyoZXqeyYj9FdCyjKO7FRz_aS3Al9v9iuEKiNQaq5itHr5J-a47yCGNz8Q0JbpBnYnYx", forHTTPHeaderField: "Authorization")
+            request.addValue(Constants.apiKey, forHTTPHeaderField: "Authorization")
             
         // Get URL session
             let session = URLSession.shared
@@ -77,7 +81,26 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         // Create Data Task
             let dataTask = session.dataTask(with: request) { data, response, error in
                 if error == nil {
-                    print(response)
+                    
+                    let decoder = JSONDecoder()
+                    
+                    do {
+                        let modelData = try decoder.decode(BusinessSearch.self, from: data!)
+//                        self.businessSearch = modelData
+                        print(modelData)
+                        DispatchQueue.main.async {
+                            
+                            // consider changing to switch to make easier for cases
+                            if category == Constants.sightsKey {
+                                self.sights = modelData.businesses
+                            } else if category == Constants.restaurantsKey {
+                                self.restaurants = modelData.businesses
+                            }
+                        }
+                        
+                    } catch {
+                        print(error)
+                    }
                 }
             }
         
