@@ -14,6 +14,7 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var restaurants = [Business]()
     
     var locationManager = CLLocationManager()
+    @Published var authorizationState = CLAuthorizationStatus.notDetermined
     
     override init() {
         // Run the NSObject's init func (i.e., the super version)
@@ -31,6 +32,9 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // MARK - Location Manager Delegate Methods
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        authorizationState = locationManager.authorizationStatus
+        
         if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
             // Start geolocating the user AFTER permission granted
             locationManager.startUpdatingLocation()
