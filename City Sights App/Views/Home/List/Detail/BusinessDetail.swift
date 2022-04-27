@@ -116,6 +116,7 @@ struct BusinessDetail: View {
                     
                     Text("Get Directions")
                         .bold()
+                        .foregroundColor(.white)
                 }
                 .padding()
             }
