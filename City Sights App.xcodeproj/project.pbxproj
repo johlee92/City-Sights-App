@@ -87,6 +87,7 @@
 				CB52BA402818F97E0027C72B /* HomeView.swift */,
 				CB52BA4E2819C0040027C72B /* Map */,
 				CB52BA422818FB830027C72B /* List */,
+				CB52BA4B2819A5DC0027C72B /* Detail */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -98,7 +99,6 @@
 				CB52BA472818FE3F0027C72B /* BusinessSection.swift */,
 				CB52BA452818FD9B0027C72B /* BusinessSectionHeader.swift */,
 				CB52BA49281910130027C72B /* BusinessRow.swift */,
-				CB52BA4B2819A5DC0027C72B /* Detail */,
 			);
 			path = List;
 			sourceTree = "<group>";

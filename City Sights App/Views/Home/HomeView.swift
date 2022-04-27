@@ -13,6 +13,7 @@ struct HomeView: View {
     
     // Default view is list view
     @State var isMapShowing = false
+    @State var selectedBusiness:Business?
     
     var body: some View {
         
@@ -41,8 +42,12 @@ struct HomeView: View {
                     .navigationBarHidden(true)
                 } else {
                     // Show map
-                    BusinessMap()
+                    BusinessMap(selectedBusiness: $selectedBusiness)
                         .ignoresSafeArea()
+                        .sheet(item: $selectedBusiness, content: {
+                            business in
+                            BusinessDetail(business: business)
+                        })
                 }
             }
             
