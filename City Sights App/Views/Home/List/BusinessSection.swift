@@ -16,7 +16,7 @@ struct BusinessSection: View {
         Section(header: BusinessSectionHeader(title: title)) {
             ForEach(businesses) {
                 business in
-                Text(business.name ?? "")
+                BusinessRow(business: business)
                 Divider()
             }
         }

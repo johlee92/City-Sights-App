@@ -91,14 +91,25 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                     do {
                         let modelData = try decoder.decode(BusinessSearch.self, from: data!)
 //                        self.businessSearch = modelData
-                        print(modelData)
+//                        print(modelData)
+                        
+                        // Sort businesses so the closest ones show up first
+                        var businesses =  modelData.businesses
+                        businesses.sort { b1, b2 in
+                            return b1.distance ?? 0 < b2.distance ?? 0
+                        }
+                        
+                        for b in businesses {
+                            b.getImageData()
+                        }
+                        
                         DispatchQueue.main.async {
                             
                             // consider changing to switch to make easier for cases
                             if category == Constants.sightsKey {
-                                self.sights = modelData.businesses
+                                self.sights = businesses
                             } else if category == Constants.restaurantsKey {
-                                self.restaurants = modelData.businesses
+                                self.restaurants = businesses
                             }
                         }
                         
