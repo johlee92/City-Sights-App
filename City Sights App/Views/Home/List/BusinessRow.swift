@@ -38,6 +38,7 @@ struct BusinessRow: View {
                 VStack (alignment: .leading){
                     Text(business.name ?? "")
                         .bold()
+                        .lineLimit(1)
                     
                     Text(String(format:"%.1f km", (business.distance ?? 0)/1000))
                         .font(.caption)
@@ -53,8 +54,9 @@ struct BusinessRow: View {
                 }
             }
             
-            Divider()
+
         }
+        .foregroundColor(.black)
     }
 }
 
